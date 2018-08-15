@@ -1,0 +1,49 @@
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cadastro</title>
+
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/cad_style.css") }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head> 
+<body>
+
+	<div class="container">
+		<form class="form-valida" method="POST">
+			<h1>Cadastro</h1>
+			<div class="input">
+				<i class="fas fa-user"></i>
+				{{ form.csrf_token }}
+
+				{{ form.nome(_class='form-control', type="text", placeholder="Nome", maxlength="30", size="25") }}
+
+			</div>
+
+			<div class="input">
+				<i class="fas fa-envelope"></i>
+
+				{{ form.email(_class='form-control', type="text", placeholder="Email", maxlength="35", size="25") }}
+
+			</div>
+
+			<div class="input">
+				<i class="fas fa-lock"></i>
+
+				{{ form.password(_class='form-control', type="password", placeholder="Password", maxlength="15", size="25") }}
+
+			</div>
+
+			<div class="input">
+				<i class="fas fa-lock"></i>
+
+				{{ form.confpassword(_class='form-control', type="password", placeholder="Confirm password", maxlength="15", size="25") }}
+
+			</div>
+			<input class="btn" type="submit" name="submit" action='/' value="Cadastrar"/><br>
+		</form>
+	</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sing in</title>
+
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename="css/style.css") }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+<body>	
+
+	<div class="container-log">
+		<form class="form-valida" method="POST">
+			<h1>Login</h1>
+			<div class="input">
+				<i class="fas fa-user"></i>
+				{{ form.csrf_token }}
+
+				{{ form.email(_class='form-control', type='text', placeholder='Username', maxlength='30', size='25') }}
+
+				{% if form.errors.email %}
+					<div class='alert-danger' role='alert'>
+						{{ form.errors.email }}
+					</div>
+				{% endif %}
+			</div>
+			<div class="input">
+				<i class="fas fa-lock"></i>
+				
+				{{ form.password(_class='form-control', type="password" , placeholder='Password', maxlength='20' , size='25') }}
+
+				{% if form.errors.password %}
+					<div class='alert-danger' role='alert'>
+						{{ form.errors.password }}
+					</div>
+				{% endif %}
+			</div>
+
+			<input class="btn" type="submit" name="submit" value="ENTRAR"/><br>
+		</form>
+        <form class="form-valida" action="{{ url_for('create_account') }}">
+        	<input class="btn" type="submit" value="CADASTRAR-SE"/><br>
+			<a href="{{ url_for('forgetme') }}">Esqueceu a senha?</a>
+        </form>
+	</div>
+</body>
+</html>
+{% endblock %}

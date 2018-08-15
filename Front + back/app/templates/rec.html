@@ -1,0 +1,32 @@
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Recuperação de Senha</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename="css/for_style.css") }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+<body>
+	<div class="conteiner">
+		<form method="POST" action="">
+			<h1>Nova senha</h1>
+				{{ form.csrf_token }}
+			<div class="input">
+				<i class="fas fa-lock"></i>
+					{{ form.email(_class='form-control', type="text", placeholder="Email", maxlength="30", size="25") }}
+			</div>
+			<div class="input">
+				<i class="fas fa-lock"></i>
+					{{ form.password(_class='form-control', type="password", placeholder="New password", maxlength="30", size="25") }}
+			</div>
+			<div class="input">
+				<i class="fas fa-lock"></i>
+					{{ form.confpassword(_class='form-control', type="password", placeholder="Confirm password", maxlength="30", size="25") }}
+			</div>
+			<input class="btn" type="submit" value="Cadastrar"/><br>
+		</form>
+	</div>
+</body>
+</html>
+{% endblock %}
